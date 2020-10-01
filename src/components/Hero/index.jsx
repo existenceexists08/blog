@@ -1,15 +1,20 @@
 import React from "react";
 import { Banner, Overlay, Container, Text } from "./styles";
 
-const Hero = () => {
+const Hero = ({ type, title }) => {
   return (
-    <Banner role="banner">
+    <Banner type={type} role="banner">
       <Overlay />
       <Container>
         <Text>
-          <h2>welcome to</h2>
-          <h1>Rebel Rabbits</h1>
-          <p>Home of the old guard. Radicalism without hyperbole.</p>
+          {type === "home" && (
+            <>
+              <h2>welcome to</h2>
+              <h1>Rebel Rabbits</h1>
+              <p>Home of the old guard. Radicalism without hyperbole.</p>
+            </>
+          )}
+          {type === "page" && <h1>{title}</h1>}
         </Text>
       </Container>
     </Banner>

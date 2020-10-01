@@ -20,7 +20,7 @@ export const IndexPageTemplate = ({
   intro,
 }) => (
   <div>
-    <Hero />
+    <Hero type="home" />
     <Main type="primary">
       <Section>
         <Container>
