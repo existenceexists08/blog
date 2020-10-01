@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+
+:root {
+  --e-global-color-primary: #6ec1e4;
+  --e-global-color-secondary: #54595f;
+  --e-global-color-text: #7a7a7a;
+  --e-global-color-accent: #61ce70;
+  --e-global-color-24cb6440: #4054b2;
+  --e-global-color-612a6427: #23a455;
+  --e-global-color-5da9ef4f: #000;
+  --e-global-color-6f6bd1a4: #fff;
+  --e-global-color-6ff3f7ee: #1a6c7a;
+  --button-font: "Montserrat", sans-serif;
+  --button-font-weight: 500;
+  --e-global-typography-primary-font-family: "Roboto";
+  --e-global-typography-primary-font-weight: 600;
+  --e-global-typography-secondary-font-family: "Roboto Slab";
+  --e-global-typography-secondary-font-weight: 400;
+  --e-global-typography-text-font-family: "Roboto";
+  --e-global-typography-text-font-weight: 400;
+  --e-global-typography-accent-font-family: "Roboto";
+  --e-global-typography-accent-font-weight: 500;
+
+  --small: 544px;
+  --tablet: 768px;
+  --desktop: 992px;
+  --desktop-md: 1200px;
+  --desktop-lg: 1400;
+}
+
+html,
+body {
+  color: #625f5f;
+  font-size: 16px;
+  line-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--button-font);
+  p {
+    margin: 1em 0;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    letter-spacing: 2.5px;
+  }
+  main {
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #000f2b;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
