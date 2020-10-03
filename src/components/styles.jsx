@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const TwoCol = styled.div`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-wrap: no-wrap;
   width: 100%;
@@ -66,7 +66,7 @@ const CTASection = css`
     background-image: radial-gradient(
       at center center,
       #153243 0%,
-      var(--e-global-color-6ff3f7ee) 100%
+      var(--blue-gray) 100%
     );
     opacity: 0.6;
     transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
@@ -94,4 +94,19 @@ export const Section = styled.section`
   position: relative;
   ${({ type }) => type === "CTA" && CTASection}
   background-image: ${({ url }) => url && `url('${url}')`};
+  ${({ fade }) =>
+    fade &&
+    css`
+      background-color: transparent;
+      background-image: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        rgba(26, 108, 122, 0.08) 100%
+      );
+    `}
+`;
+
+export const SectionHeading = styled.h2`
+  margin-bottom: 2rem;
+  text-align: center;
 `;

@@ -7,7 +7,12 @@ import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import Hero from "../components/Hero";
 import Main from "../components/Main";
-import { Container, TwoCol, Section } from "../components/styles";
+import {
+  Container,
+  TwoCol,
+  Section,
+  SectionHeading,
+} from "../components/styles";
 import Button from "../components/Button";
 
 export const IndexPageTemplate = ({
@@ -43,8 +48,9 @@ export const IndexPageTemplate = ({
           </TwoCol>
         </Container>
       </Section>
-      <Section type="primary">
+      <Section type="primary" fade={true}>
         <Container>
+          <SectionHeading>Latest Posts</SectionHeading>
           <BlogRoll />
         </Container>
       </Section>

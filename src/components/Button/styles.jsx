@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 const primaryCSS = css`
-  background-color: var(--e-global-color-6ff3f7ee);
-  border: solid 2px var(--e-global-color-6ff3f7ee);
+  background-color: var(--blue-gray);
+  border: solid 2px var(--blue-gray);
   color: #fff;
 
   &:hover {
@@ -14,25 +14,25 @@ const primaryCSS = css`
 
 const transparentPrimaryCSS = css`
   background-color: rgba(0, 0, 0, 0);
-  border: solid 2px var(--e-global-color-6ff3f7ee);
-  color: var(--e-global-color-6ff3f7ee);
+  border: solid 2px var(--blue-gray);
+  color: var(--blue-gray);
 
   &:hover {
     color: #ffffff;
-    background-color: var(--e-global-color-6ff3f7ee);
-    border-color: var(--e-global-color-6ff3f7ee);
+    background-color: var(--blue-gray);
+    border-color: var(--blue-gray);
   }
 `;
 
 const whiteCSS = css`
   background-color: #fff;
   border: solid 2px #fff;
-  color: var(--e-global-color-6ff3f7ee);
+  color: var(--blue-gray);
 
   &:hover {
     color: #ffffff;
-    background-color: var(--e-global-color-6ff3f7ee);
-    border-color: var(--e-global-color-6ff3f7ee);
+    background-color: var(--blue-gray);
+    border-color: var(--blue-gray);
   }
 `;
 
@@ -43,8 +43,24 @@ const transparentwhiteCSS = css`
 
   &:hover {
     color: #ffffff;
-    background-color: var(--e-global-color-6ff3f7ee);
-    border-color: var(--e-global-color-6ff3f7ee);
+    background-color: var(--blue-gray);
+    border-color: var(--blue-gray);
+  }
+`;
+
+const tagCSS = css`
+  background-color: rgba(26, 108, 122, 0.14);
+  border: solid 2px var(--blue-gray);
+  border-radius: 0.5rem;
+  color: var(--blue-gray);
+  font-size: 0.89em;
+  padding: 0.5em 1em;
+  text-transform: capitalize;
+
+  &:hover {
+    color: #ffffff;
+    background-color: var(--blue-gray);
+    border-color: var(--blue-gray);
   }
 `;
 
@@ -54,7 +70,7 @@ export const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 0.75rem;
-  font-family: var(--button-font);
+  font-family: var(--primary-font);
   font-weight: var(--button-font-weight);
   letter-spacing: 2px;
   line-height: 1;
@@ -66,6 +82,7 @@ export const StyledButton = styled.button`
   ${({ type }) => type === "white" && whiteCSS}
   ${({ type }) => type === "transparentP" && transparentPrimaryCSS}
   ${({ type }) => type === "transparentW" && transparentwhiteCSS}
+  ${({ type }) => type === "tag" && tagCSS}
 
   a {
     color: inherit;
