@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Header = styled.header`
   background: none;
@@ -34,6 +34,70 @@ export const Header = styled.header`
   }
 `;
 
+// const fadeIn = keyframes`
+//   0% {
+//     opacity: 0;
+//     visibility: hidden;
+//     z-index: 0;
+//   }
+
+//   1% {
+//     opacity: 0;
+//     visibility: visible;
+//     z-index: 3;
+//   }
+
+//   100% {
+//     opacity: 1;
+//     z-index: 3;
+//   }
+// `;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
+
+export const MobileMenu = styled.nav`
+  align-items: center;
+  background: rgb(64, 84, 178);
+  background: linear-gradient(
+    0deg,
+    rgba(64, 84, 178, 1) 10%,
+    rgba(110, 193, 228, 1) 33%,
+    rgba(26, 108, 122, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 3;
+  visibility: ${(props) => (props.out ? "hidden" : "visible")};
+  animation: ${(props) => (props.out ? fadeOut : fadeIn)} 0.2s linear forwards;
+  transition: visibility 0.2s linear;
+`;
+
 export const NavContainer = styled.div`
   color: #fff;
   display: flex;
@@ -50,7 +114,69 @@ export const SiteBranding = styled.div`
   }
 `;
 
+export const MobileNav = styled.div`
+  position: relative;
+  z-index: 4;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const isActiveCSS = css`
+  span {
+    &:first-child {
+      transform: translateY(5px) rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+  }
+`;
+
+export const Hamburger = styled.button`
+  appearance: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  height: 3.25rem;
+  outline: none;
+  position: relative;
+  width: 3.25rem;
+  margin-left: auto;
+
+  span {
+    background-color: currentColor;
+    display: block;
+    height: 1px;
+    left: calc(50% - 8px);
+    position: absolute;
+    transform-origin: center;
+    transition-duration: 86ms;
+    transition-property: background-color, opacity, transform;
+    transition-timing-function: ease-out;
+    width: 16px;
+
+    &:first-child {
+      top: calc(50% - 6px);
+    }
+    &:nth-child(2) {
+      top: calc(50% - 1px);
+    }
+    &:nth-child(3) {
+      top: calc(50% + 4px);
+    }
+  }
+
+  ${({ isActive }) => isActive && isActiveCSS};
+`;
+
 export const Nav = styled.nav`
+  display: none;
   margin-left: auto;
   > ul {
     align-items: center;
@@ -65,5 +191,8 @@ export const Nav = styled.nav`
     li:last-child {
       padding: 0 1em;
     }
+  }
+  @media (min-width: 768px) {
+    display: block;
   }
 `;
