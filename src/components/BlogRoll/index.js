@@ -43,14 +43,17 @@ class BlogRoll extends React.Component {
                   <div>
                     <p>{post.frontmatter.description}</p>
                     <Tags>
-                      {post.frontmatter.tags.map((tag) => (
-                        <Link
-                          key={tag}
-                          to={`/tags/${tag.replaceAll(" ", "-")}`}
-                        >
-                          <Button type="tag">{tag}</Button>
-                        </Link>
-                      ))}
+                      {post.frontmatter.tags.map((tag) => {
+                        if (tag && typeof tag === "string")
+                          return (
+                            <Link
+                              key={tag}
+                              to={`/tags/${tag.replace(/" "/, "-")}`}
+                            >
+                              <Button type="tag">{tag}</Button>
+                            </Link>
+                          );
+                      })}
                     </Tags>
                   </div>
                 </Body>
