@@ -1,4 +1,6 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+import { Container } from "../styles";
+
 export const Overlay = styled.div`
   left: 0;
   position: absolute;
@@ -11,20 +13,18 @@ export const Overlay = styled.div`
   height: 100%;
 `;
 
-export const Container = styled.div`
+export const HeroContainer = styled(Container)`
   align-items: center;
   display: flex;
-  margin: 0 auto;
-  max-width: 700px;
   min-height: 70vh;
   position: relative;
-  width: 80%;
+  z-index: 2;
 `;
 
 export const Text = styled.div`
   color: #fff;
-  /* display: flex; */
-  text-align: center;
+  text-align: left;
+  text-shadow: 4px 4px 5px rgba(50, 50, 50, 1);
   width: 100%;
 
   h2 {
@@ -66,6 +66,8 @@ const pageBannerCSS = css`
   }
 
   ${Text} {
+    text-align: center;
+    text-shadow: none;
     h1 {
       margin: 0;
       padding: 1rem;
@@ -73,11 +75,161 @@ const pageBannerCSS = css`
   }
 `;
 
+export const HomeBGContainer = styled.div`
+  height: 100%;
+  opacity: 0.2;
+  padding: 2em 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  @media (min-width: 992px) {
+    opacity: 0.5;
+    width: 50%;
+  }
+`;
+
+const bounce4 = keyframes`
+0% {
+  transform: translate(0px, 0px);
+}
+50% {
+  transform: translate(-80px, -80px);
+}
+100% {
+  transform: translate(0px, 0px);
+}
+`;
+const bounce3 = keyframes`
+0% {
+  transform: translate(0px, 0px);
+}
+50% {
+  transform: translate(-60px, -60px);
+}
+100% {
+  transform: translate(0px, 0px);
+}
+`;
+const bounce2 = keyframes`
+0% {
+  transform: translate(0px, 0px);
+}
+50% {
+  transform: translate(-40px, -40px);
+}
+100% {
+  transform: translate(0px, 0px);
+}
+`;
+const bounce1 = keyframes`
+0% {
+  transform: translate(0px, 0px);
+}
+50% {
+  transform: translate(-20px, -20px);
+}
+100% {
+  transform: translate(0px, 0px);
+}
+`;
+
+export const HomeBG = styled.div`
+  position: relative;
+  height: 100%;
+  transform: rotate(30deg) skew(-25deg) scale(0.8);
+  transition: 0.5s;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+  .item {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    transition: border 0.2s linear;
+
+    &:after {
+      border-radius: 15px;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s linear;
+      box-shadow: 0px 0px 29px 6px rgba(20, 255, 236, 1);
+      width: 100%;
+    }
+
+    svg {
+      position: absolute;
+      transition: 1s cubic-bezier(0.25, 1.55, 0.74, 0);
+      width: 80%;
+      height: auto;
+      fill: var(--blue-light);
+      stroke: var(--blue-light);
+      &#ballot {
+        stroke: none;
+      }
+      &.gadsden {
+        width: 100%;
+      }
+      &.feminist {
+        width: 65%;
+      }
+
+      &:nth-child(3) {
+        opacity: 0.6;
+      }
+      &:nth-child(2) {
+        opacity: 0.4;
+      }
+
+      &:nth-child(1) {
+        opacity: 0.2;
+      }
+    }
+
+    &.isActive {
+      border-color: var(--blue-light);
+
+      &:after {
+        opacity: 1;
+      }
+      svg {
+        &:nth-child(4) {
+          /* animation: ${bounce4} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          animation: ${bounce4} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+        }
+        &:nth-child(3) {
+          /* animation: ${bounce3} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          animation: ${bounce3} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+        }
+        &:nth-child(2) {
+          /* animation: ${bounce2} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          animation: ${bounce2} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+        }
+
+        &:nth-child(1) {
+          /* animation: ${bounce1} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          animation: ${bounce1} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+        }
+      }
+    }
+  }
+`;
+
 export const Banner = styled.section`
-  background-attachment: scroll;
-  background-image: url(https://websitedemos.net/mountain/wp-content/uploads/sites/571/2020/04/landscape-mountains-sky-4843193.jpg);
-  background-position-x: 50%;
-  background-position-y: 35%;
+  background: var(--gray-dark);
   background-size: cover;
   box-sizing: border-box;
   color: rgb(98, 95, 95);

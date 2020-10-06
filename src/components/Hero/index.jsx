@@ -1,11 +1,73 @@
-import React from "react";
-import { Banner, Overlay, Container, Text } from "./styles";
+import React, { useState, useEffect } from "react";
+import {
+  Banner,
+  Overlay,
+  HeroContainer,
+  Text,
+  HomeBGContainer,
+  HomeBG,
+} from "./styles";
+import Agorist from "../../img/political/agorist.svg";
+import All from "../../img/political/ALL.svg";
+import Arrows from "../../img/political/Arrows.svg";
+import AnCom from "../../img/political/AnCom.svg";
+import Ballot from "../../img/political/ballot.svg";
+import Democrat from "../../img/political/democrat.svg";
+import Feminist from "../../img/political/feminist.svg";
+import Gadsden from "../../img/political/gadsden.svg";
+import Republican from "../../img/political/republican.svg";
 
 const Hero = ({ type, title }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const svgs = [
+    Agorist,
+    Democrat,
+    Arrows,
+    Ballot,
+    All,
+    Feminist,
+    AnCom,
+    Gadsden,
+    Republican,
+  ];
+
+  const activateItem = () => {
+    console.log("activeIndex", activeIndex);
+    const newIndex = Math.floor(Math.random() * 9);
+    setActiveIndex(newIndex === activeIndex ? newIndex + 1 : newIndex);
+  };
+
+  useEffect(() => {
+    // //run instantly
+    // activateItem();
+
+    const interval = setInterval(() => {
+      //every 2 seconds
+      activateItem();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [activeIndex]);
   return (
     <Banner type={type} role="banner">
-      <Overlay />
-      <Container>
+      {type === "page" && <Overlay />}
+      {type === "home" && (
+        <HomeBGContainer>
+          <HomeBG>
+            {svgs.map((Svg, index) => (
+              <div
+                className={`item ${index === activeIndex ? "isActive" : ""}`}
+              >
+                <Svg />
+                <Svg />
+                <Svg />
+                <Svg />
+              </div>
+            ))}
+          </HomeBG>
+        </HomeBGContainer>
+      )}
+      <HeroContainer>
         <Text>
           {type === "home" && (
             <>
@@ -16,7 +78,7 @@ const Hero = ({ type, title }) => {
           )}
           {type === "page" && <h1>{title}</h1>}
         </Text>
-      </Container>
+      </HeroContainer>
     </Banner>
   );
 };
