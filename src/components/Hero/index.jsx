@@ -6,7 +6,9 @@ import {
   Text,
   HomeBGContainer,
   HomeBG,
+  Wrapper,
 } from "./styles";
+import AnimatedBorder from "../AnimatedBorder";
 import Agorist from "../../img/political/agorist.svg";
 import All from "../../img/political/ALL.svg";
 import Arrows from "../../img/political/Arrows.svg";
@@ -39,9 +41,6 @@ const Hero = ({ type, title }) => {
   };
 
   useEffect(() => {
-    // //run instantly
-    // activateItem();
-
     const interval = setInterval(() => {
       //every 2 seconds
       activateItem();
@@ -53,18 +52,29 @@ const Hero = ({ type, title }) => {
       {type === "page" && <Overlay />}
       {type === "home" && (
         <HomeBGContainer>
-          <HomeBG>
-            {svgs.map((Svg, index) => (
-              <div
-                className={`item ${index === activeIndex ? "isActive" : ""}`}
-              >
-                <Svg />
-                <Svg />
-                <Svg />
-                <Svg />
-              </div>
-            ))}
-          </HomeBG>
+          <Wrapper>
+            <HomeBG>
+              {svgs.map((Svg, index) => {
+                const isTop = Math.floor(Math.random() * 2) === 0;
+                return (
+                  <div
+                    className={`item ${
+                      index === activeIndex ? "isActive" : ""
+                    }`}
+                  >
+                    <Svg />
+                    <Svg />
+                    <Svg />
+                    <Svg />
+                    <AnimatedBorder
+                      topRight={isTop}
+                      isActive={index === activeIndex}
+                    />
+                  </div>
+                );
+              })}
+            </HomeBG>
+          </Wrapper>
         </HomeBGContainer>
       )}
       <HeroContainer>

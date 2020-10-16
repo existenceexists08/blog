@@ -75,10 +75,17 @@ const pageBannerCSS = css`
   }
 `;
 
+export const Wrapper = styled.div`
+  height: 0;
+  padding-bottom: 100%;
+  width: 100%;
+  position: relative;
+`;
+
 export const HomeBGContainer = styled.div`
   height: 100%;
-  opacity: 0.2;
-  padding: 2em 0;
+  /* opacity: 0.2; */
+  padding: 0;
   position: absolute;
   right: 0;
   top: 0;
@@ -86,7 +93,7 @@ export const HomeBGContainer = styled.div`
   z-index: 1;
 
   @media (min-width: 992px) {
-    opacity: 0.5;
+    /* opacity: 0.5; */
     width: 50%;
   }
 `;
@@ -137,7 +144,7 @@ const bounce1 = keyframes`
 `;
 
 export const HomeBG = styled.div`
-  position: relative;
+  position: absolute;
   height: 100%;
   transform: rotate(30deg) skew(-25deg) scale(0.8);
   transition: 0.5s;
@@ -145,6 +152,7 @@ export const HomeBG = styled.div`
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
+  width: 100%;
 
   .item {
     align-items: center;
@@ -172,11 +180,13 @@ export const HomeBG = styled.div`
 
     svg {
       position: absolute;
-      transition: 1s cubic-bezier(0.25, 1.55, 0.74, 0);
+      /* transition: 1s cubic-bezier(0.25, 1.55, 0.74, 0); */
+      transition: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
       width: 80%;
       height: auto;
       fill: var(--blue-light);
       stroke: var(--blue-light);
+      opacity: 0.2;
       &#ballot {
         stroke: none;
       }
@@ -188,14 +198,26 @@ export const HomeBG = styled.div`
       }
 
       &:nth-child(3) {
-        opacity: 0.6;
+        opacity: calc(0.6 * 0.2);
       }
       &:nth-child(2) {
-        opacity: 0.4;
+        opacity: calc(0.4 * 0.2);
       }
-
       &:nth-child(1) {
-        opacity: 0.2;
+        opacity: calc(0.2 * 0.2);
+      }
+      @media (min-width: 992px) {
+        opacity: 0.5;
+
+        &:nth-child(3) {
+          opacity: calc(0.6 * 0.5);
+        }
+        &:nth-child(2) {
+          opacity: calc(0.4 * 0.5);
+        }
+        &:nth-child(1) {
+          opacity: calc(0.2 * 0.5);
+        }
       }
     }
 
@@ -235,6 +257,7 @@ export const Banner = styled.section`
   color: rgb(98, 95, 95);
   display: block;
   height: 70vh;
+  overflow: hidden;
   position: relative;
   width: 100%;
 
