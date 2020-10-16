@@ -21,6 +21,7 @@ import Republican from "../../img/political/republican.svg";
 
 const Hero = ({ type, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [activeBorderIndex, setActiveBorderIndex] = useState(null);
 
   const svgs = [
     Agorist,
@@ -40,11 +41,26 @@ const Hero = ({ type, title }) => {
     setActiveIndex(newIndex === activeIndex ? newIndex + 1 : newIndex);
   };
 
+  const activateBorder = () => {
+    const newIndex = Math.floor(Math.random() * 9);
+    setActiveBorderIndex(
+      newIndex === activeBorderIndex ? newIndex + 1 : newIndex
+    );
+  };
+
+  useEffect(() => {
+    const borderInterval = setInterval(() => {
+      //every 2 seconds
+      activateBorder();
+    }, 2000);
+    return () => clearInterval(borderInterval);
+  }, [activeBorderIndex]);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      //every 2 seconds
+      //every 4 seconds
       activateItem();
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [activeIndex]);
   return (
@@ -68,7 +84,7 @@ const Hero = ({ type, title }) => {
                     <Svg />
                     <AnimatedBorder
                       topRight={isTop}
-                      isActive={index === activeIndex}
+                      isActive={index === activeBorderIndex}
                     />
                   </div>
                 );

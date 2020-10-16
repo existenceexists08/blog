@@ -151,31 +151,41 @@ export const HomeBG = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  /* grid-gap: 10px; */
   width: 100%;
 
   .item {
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid white;
-    border-radius: 15px;
     display: flex;
     justify-content: center;
     position: relative;
     padding: 10px;
     transition: border 0.2s linear;
 
+    &:before {
+      content: "";
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      border-radius: 15px;
+      position: absolute;
+      height: calc(100% - 20px);
+      width: calc(100% - 20px);
+      opacity: 0.5;
+      top: 10px;
+      left: 10px;
+    }
+
     &:after {
       border-radius: 15px;
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
+      top: 10px;
+      left: 10px;
+      height: calc(100% - 20px);
       opacity: 0;
       transition: opacity 0.3s linear;
       box-shadow: 0px 0px 29px 6px rgba(20, 255, 236, 1);
-      width: 100%;
+      width: calc(100% - 20px);
     }
 
     svg {

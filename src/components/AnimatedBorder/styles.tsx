@@ -43,7 +43,7 @@ export const Vertical = styled.span`
   height: 100%;
   position: absolute;
   width: 2px;
-  animation-duration: 1s;
+  animation-duration: 4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
@@ -52,7 +52,7 @@ export const Horizontal = styled.span`
   height: 2px;
   position: absolute;
   width: 100%;
-  animation-duration: 1s;
+  animation-duration: 4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
@@ -87,7 +87,7 @@ export const Box = styled.div`
     transition: 0.5s;
 
     ${Horizontal} {
-      animation-delay: 0.25s;
+      animation-delay: 1s;
 
       ${({ topRight }) => topRight && horizontalTopRightCSS}
       ${({ topRight }) => !topRight && horizontalBottomLeftCSS}
