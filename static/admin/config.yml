@@ -34,7 +34,7 @@ collections:
       - { label: "Tags", name: "tags", widget: "list" }
   - name: "property"
     label: "Property"
-    folder: "src/property"
+    folder: "src/pages/property"
     create: true
     slug: "property-{{title}}"
     fields:
@@ -50,7 +50,7 @@ collections:
 
   - name: "event"
     label: "Event"
-    folder: "src/event"
+    folder: "src/pages/event"
     create: true
     slug: "event-{{title}}"
     fields:
