@@ -80,8 +80,8 @@ const Hero = ({ type, title }) => {
                   >
                     <Svg />
                     <Svg />
-                    <Svg />
-                    <Svg />
+                    {/* <Svg />
+                    <Svg /> */}
                     <AnimatedBorder
                       topRight={isTop}
                       isActive={index === activeBorderIndex}
@@ -99,7 +99,10 @@ const Hero = ({ type, title }) => {
             <>
               <h2>welcome to</h2>
               <h1>Rebel Rabbits</h1>
-              <p>Home of the old guard. Radicalism without hyperbole.</p>
+              <p>
+                Navigating the influences of the libertarian space. Guarding
+                against bigorty and authoritarian entryism.
+              </p>
             </>
           )}
           {type === "page" && <h1>{title}</h1>}

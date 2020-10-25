@@ -1,21 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary: #6ec1e4;
-  --secondary: #54595f;
-  --text: #7a7a7a;
-  --accent: #61ce70;
-  // --blue-dark: #4054b2;
-  --green: #23a455;
-  --blue-gray: #1a6c7a;
-  --off-black: #000f2b;
-  // --gray: #7a7a7a;
-  --link: var(--gray);
+  --gray-900: #0d0d0d; /* 900 */
+  --gray-800: #121212; /* 800 */
+  --gray-700: #212121; /* 700 */
+  --gray-500: #3b3b3b; /* 500 */
+  --gray-300: #626262; /* 300 */
+  --gray-100: #7c7c7c; /* 100 */
+  --gray-70: #a3a3a3; /* 70 */
+  --gray-50: #bdbdbd; /* 50 */
+  --gray-30: #d7d7d7; /* 30 */
+  --gray-10: #f1f1f1; /* 10 */
 
-  --gray-dark: #212121;
-  --gray: #323232;
-  --blue-dark: #0d7377;
-  --blue-light: #14ffec;
+  /* 🎨Green */
+  --green-800: #031d18; /* 800 */
+  --green-700: #042722; /* 700 */
+  --green-600: #063a37; /* 600 */
+  --green-500: #095657; /* 500 */
+  --green-300: #0d7377; /* 300 */
+  --green-90: #499499; /* 90 */
+  --green-70: #71a9af; /* 70 */
+  --green-60: #9abcc6; /* 60 */
+  --green-40: #c2d6dd; /* 40 */
+  --green-20: #eaf0f3; /* 20 */
+
+  /* 🎨Aqua */
+  --aqua-600: #023733; /* 600 */
+  --aqua-600: #023733; /* 600 */
+  --aqua-400: #05625a; /* 400 */
+  --aqua-200: #098d82; /* 200 */
+  --aqua-80: #0cb7a9; /* 80 */
+  --aqua-60: #10e2d0; /* 60 */
+  --aqua-40: #14ffec; /* 40 */
+  --aqua-30: #77fff3; /* 30 */
+  --aqua-20: #99fff6; /* 20 */
+  --aqua-10: #ddfffc; /* 10 */
+  --gray-dark: var(--gray-700);
+  --gray: var(--gray-300);
+  --blue-dark: var(--green-300);
+  --blue-light: var(--aqua-40);
 
   --primary-font: "Montserrat", sans-serif;
   --primary-font-weight: 500;

@@ -204,30 +204,30 @@ export const HomeBG = styled.div`
         width: 100%;
       }
       &.feminist {
-        width: 65%;
+        width: 55%;
       }
 
-      &:nth-child(3) {
+      /* &:nth-child(3) {
         opacity: calc(0.6 * 0.2);
-      }
-      &:nth-child(2) {
+      } */
+      &:nth-child(1) {
         opacity: calc(0.4 * 0.2);
       }
-      &:nth-child(1) {
+      /* &:nth-child(1) {
         opacity: calc(0.2 * 0.2);
-      }
+      } */
       @media (min-width: 992px) {
         opacity: 0.5;
 
-        &:nth-child(3) {
+        /* &:nth-child(3) {
           opacity: calc(0.6 * 0.5);
-        }
-        &:nth-child(2) {
+        } */
+        &:nth-child(1) {
           opacity: calc(0.4 * 0.5);
         }
-        &:nth-child(1) {
+        /* &:nth-child(1) {
           opacity: calc(0.2 * 0.5);
-        }
+        } */
       }
     }
 
@@ -247,13 +247,16 @@ export const HomeBG = styled.div`
           animation: ${bounce3} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
         }
         &:nth-child(2) {
-          /* animation: ${bounce2} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          animation: ${bounce2} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+          /* animation: ${bounce4} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          /* animation: ${bounce4} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14); */
+          animation: ${bounce4} 2s ease-in-out;
         }
 
         &:nth-child(1) {
-          /* animation: ${bounce1} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          animation: ${bounce1} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
+          display: none;
+          /* animation: ${bounce2} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
+          /* animation: ${bounce2} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14); */
+          animation: ${bounce2} 2s ease-in-out;
         }
       }
     }
@@ -272,4 +275,9 @@ export const Banner = styled.section`
   width: 100%;
 
   ${({ type }) => type !== "home" && pageBannerCSS}
+  @media (min-width: 992px) {
+    ${Text} {
+      width: ${({ type }) => (type === "home" ? "40%" : "100%")};
+    }
+  }
 `;
