@@ -53,6 +53,7 @@ class BlogRoll extends React.Component {
                               <Button type="tag">{tag}</Button>
                             </Link>
                           );
+                        return null;
                       })}
                     </Tags>
                   </div>

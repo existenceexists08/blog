@@ -32,6 +32,49 @@ collections:
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
+  - name: "property"
+    label: "Property"
+    folder: "src/property"
+    create: true
+    slug: "property-{{title}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "property",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "featuredimage", widget: image }
+
+  - name: "event"
+    label: "Event"
+    folder: "src/event"
+    create: true
+    slug: "event-{{title}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "event",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Image",
+          name: "featuredimage",
+          widget: image,
+          required: false,
+        }
+      - label: "Post Author"
+        name: "author"
+        widget: "relation"
+        collection: "property"
+        searchFields: ["title"]
+        valueField: "title"
+        display_fields: ["title"]
 
   - name: "pages"
     label: "Pages"
