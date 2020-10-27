@@ -36,6 +36,9 @@ exports.createPages = ({ actions, graphql }) => {
       const id = edge.node.id;
       const title = edge.node.frontmatter.title;
       console.log("TITLE", title);
+      if (edge.node.frontmatter.templateKey === "eventTag") {
+        return;
+      }
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,

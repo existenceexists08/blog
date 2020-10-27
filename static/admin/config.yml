@@ -47,6 +47,19 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Image", name: "featuredimage", widget: image }
+  - name: "eventTag"
+    label: "Event Tag"
+    folder: "src/pages/eventtag"
+    create: true
+    slug: "eventTag-{{title}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "eventTag",
+        }
+      - { label: "Tag Title", name: "title", widget: "text" }
 
   - name: "event"
     label: "Event"
@@ -75,7 +88,17 @@ collections:
         searchFields: ["title"]
         valueField: "title"
         display_fields: ["title"]
-      - { label: "Tags", name: "tags", widget: "list" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        fields:
+          - label: "Tag"
+            name: "tag"
+            widget: "relation"
+            collection: "eventTags"
+            searchFields: ["title"]
+            valueField: "title"
+            display_fields: ["title"]
 
   - name: "pages"
     label: "Pages"
