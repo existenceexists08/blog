@@ -5,6 +5,7 @@ import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 // import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
+import { EventRollFetcher } from "../components/EventRoll";
 import Hero from "../components/Hero";
 import Main from "../components/Main";
 import {
@@ -46,6 +47,12 @@ export const IndexPageTemplate = ({
               </Link>
             </div>
           </TwoCol>
+        </Container>
+      </Section>
+      <Section type="primary">
+        <Container>
+          <SectionHeading>Latest Events</SectionHeading>
+          <EventRollFetcher />
         </Container>
       </Section>
       <Section type="primary" fade={true}>

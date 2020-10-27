@@ -10,7 +10,7 @@ import Hero from "../components/Hero";
 export const BlogPostTemplate = ({
   content,
   contentComponent,
-  description,
+  // description,
   tags,
   title,
   helmet,

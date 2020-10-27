@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 // import github from "../img/github-icon.svg";
-import logo from "../../img/logo.svg";
+// import logo from "../../img/logo.svg";
 import { Container } from "../styles";
 import Button from "../Button";
 import {
@@ -33,6 +33,9 @@ const Navbar = () => {
                 <Link to="/about">About</Link>
               </li>
               <li>
+                <Link to="/property">Search</Link>
+              </li>
+              <li>
                 <Link to="/blog">Blog</Link>
               </li>
               <li>
@@ -56,6 +59,9 @@ const Navbar = () => {
             <ul>
               <li>
                 <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/property">Search</Link>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>

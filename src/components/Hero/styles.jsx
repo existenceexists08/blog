@@ -131,17 +131,17 @@ const bounce2 = keyframes`
   transform: translate(0px, 0px);
 }
 `;
-const bounce1 = keyframes`
-0% {
-  transform: translate(0px, 0px);
-}
-50% {
-  transform: translate(-20px, -20px);
-}
-100% {
-  transform: translate(0px, 0px);
-}
-`;
+// const bounce1 = keyframes`
+// 0% {
+//   transform: translate(0px, 0px);
+// }
+// 50% {
+//   transform: translate(-20px, -20px);
+// }
+// 100% {
+//   transform: translate(0px, 0px);
+// }
+// `;
 
 export const HomeBG = styled.div`
   position: absolute;
