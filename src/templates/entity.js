@@ -11,7 +11,7 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 // import Pricing from "../components/Pricing";
 // import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
-export const PropertyPageTemplate = ({ image, title, description, events }) => (
+export const EntityPageTemplate = ({ image, title, description, events }) => (
   <>
     <Hero type="page" title={title} />
     <section className="section">
@@ -37,20 +37,20 @@ export const PropertyPageTemplate = ({ image, title, description, events }) => (
   </>
 );
 
-PropertyPageTemplate.propTypes = {
+EntityPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
 };
 
-const PropertyPage = ({ data }) => {
+const EntityPage = ({ data }) => {
   console.log("DATA", data);
   const { events, properties } = data;
-  const [property] = properties.edges;
-  const { frontmatter } = property.node;
+  const [entity] = properties.edges;
+  const { frontmatter } = entity.node;
 
   return (
     <Layout>
-      <PropertyPageTemplate
+      <EntityPageTemplate
         image={frontmatter.featuredimage}
         description={frontmatter.description}
         title={frontmatter.title}
@@ -60,7 +60,7 @@ const PropertyPage = ({ data }) => {
   );
 };
 
-PropertyPage.propTypes = {
+EntityPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -68,10 +68,10 @@ PropertyPage.propTypes = {
   }),
 };
 
-export default PropertyPage;
+export default EntityPage;
 
-export const PropertyPageQuery = graphql`
-  query PropertyPage($title: String!) {
+export const EntityPageQuery = graphql`
+  query EntityPage($title: String!) {
     properties: allMarkdownRemark(
       filter: { frontmatter: { title: { eq: $title } } }
     ) {

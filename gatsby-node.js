@@ -35,7 +35,6 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach((edge) => {
       const id = edge.node.id;
       const title = edge.node.frontmatter.title;
-      console.log("TITLE", title);
       if (edge.node.frontmatter.templateKey === "eventTag") {
         return;
       }

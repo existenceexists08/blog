@@ -32,17 +32,17 @@ collections:
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
-  - name: "property"
-    label: "Property"
-    folder: "src/pages/property"
+  - name: "entity"
+    label: "Entity"
+    folder: "src/pages/entity"
     create: true
-    slug: "property-{{title}}"
+    slug: "entity-{{title}}"
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "property",
+          default: "entity",
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
@@ -84,7 +84,7 @@ collections:
       - label: "Post Author"
         name: "author"
         widget: "relation"
-        collection: "property"
+        collection: "entity"
         searchFields: ["title"]
         valueField: "title"
         display_fields: ["title"]
