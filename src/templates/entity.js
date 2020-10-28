@@ -26,17 +26,6 @@ export const EntityPageTemplate = ({ image, title, description, events }) => (
     <Main>
       <Section type="primary">
         <Container>
-          {/* {title && <h2>{title}</h2>}
-        {description && <p>{description}</p>}
-        {image && (
-          <PreviewCompatibleImage
-            imageInfo={{
-              image: image,
-              alt: `featured image thumbnail for post ${title}`,
-              aspectRatio: 21 / 9,
-            }}
-          />
-        )} */}
           <Grid>
             <ImgWrapper>
               {image && (
@@ -58,24 +47,30 @@ export const EntityPageTemplate = ({ image, title, description, events }) => (
               </p>
             </ByLine>
             <Social>
-              <h4>Social Platforms</h4>
+              <h3>Audience</h3>
               <ul>
                 <li>
-                  <h5>Twitter</h5>
+                  <b>Twitter</b>
                   <p>
                     Followers: <span>34,172</span>
                   </p>
                 </li>
                 <li>
-                  <h5>Facebook</h5>
+                  <b>Facebook</b>
                   <p>
                     Followers: <span>51,129</span>
+                  </p>
+                </li>
+                <li>
+                  <b>YoutTube</b>
+                  <p>
+                    Followers: <span>82,743</span>
                   </p>
                 </li>
               </ul>
             </Social>
             <Tags>
-              <h4>Common Events:</h4>
+              <h3>Common Events:</h3>
               <ul>
                 <li>Fascist Entryism</li>
                 <li>Anti-Immigration</li>
@@ -83,7 +78,7 @@ export const EntityPageTemplate = ({ image, title, description, events }) => (
               </ul>
             </Tags>
             <Overview>
-              <h4>Overview</h4>
+              <h3>Overview</h3>
               <p>
                 I'm baby church-key selfies mlkshk literally, taxidermy affogato
                 brunch tote bag keffiyeh ramps deep v asymmetrical. Unicorn

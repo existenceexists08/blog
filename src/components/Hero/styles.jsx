@@ -153,17 +153,17 @@ const bounce2 = keyframes`
   transform: translate(0px, 0px);
 }
 `;
-// const bounce1 = keyframes`
-// 0% {
-//   transform: translate(0px, 0px);
-// }
-// 50% {
-//   transform: translate(-20px, -20px);
-// }
-// 100% {
-//   transform: translate(0px, 0px);
-// }
-// `;
+const bounce1 = keyframes`
+0% {
+  transform: translate(0px, 0px);
+}
+50% {
+  transform: translate(-20px, -20px);
+}
+100% {
+  transform: translate(0px, 0px);
+}
+`;
 
 export const HomeBG = styled.div`
   position: absolute;
@@ -271,7 +271,7 @@ export const HomeBG = styled.div`
         &:nth-child(2) {
           /* animation: ${bounce4} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
           /* animation: ${bounce4} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14); */
-          animation: ${bounce4} 2s ease-in-out;
+          animation: ${bounce1} 2s ease-in-out;
         }
 
         &:nth-child(1) {
@@ -308,6 +308,7 @@ export const Banner = styled.section`
 
   ${({ type }) => type !== "home" && pageBannerCSS}
   @media (min-width: 992px) {
+    justify-content: center;
     ${Container} {
       height: auto;
     }
