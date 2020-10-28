@@ -52,8 +52,8 @@ EventPageTemplate.propTypes = {
 };
 
 const EventPage = ({ data }) => {
-  console.log("data", data);
   const { frontmatter } = data.markdownRemark;
+  console.log("frontmatter", frontmatter);
 
   return (
     <Layout>
@@ -85,6 +85,7 @@ export const EventPageQuery = graphql`
         title
         author
         description
+        tags
         featuredimage {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
