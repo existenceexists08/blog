@@ -45,7 +45,7 @@ collections:
           default: "entity",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Description", name: "description", widget: "markdown" }
       - { label: "Image", name: "featuredimage", widget: image }
 
   - name: "event"
@@ -61,7 +61,7 @@ collections:
           default: "event",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Description", name: "description", widget: "markdown" }
       - {
           label: "Image",
           name: "featuredimage",
@@ -75,17 +75,7 @@ collections:
         searchFields: ["title"]
         valueField: "title"
         display_fields: ["title"]
-      - label: "Tags"
-        name: "tags"
-        widget: "list"
-        fields:
-          - label: "Tag"
-            name: "tag"
-            widget: "relation"
-            collection: "eventTags"
-            searchFields: ["title"]
-            valueField: "title"
-            display_fields: ["title"]
+      - { label: "Tags", name: "tags", widget: "list" }
 
   - name: "pages"
     label: "Pages"
