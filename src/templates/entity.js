@@ -3,9 +3,18 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Hero from "../components/Hero";
-import { Container } from "../components/styles";
+import { Main, Container, Section, SectionHeading } from "../components/styles";
 import EventRoll from "../components/EventRoll";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
+import {
+  Grid,
+  ImgWrapper,
+  Social,
+  Tags,
+  Name,
+  Overview,
+  ByLine,
+} from "../templateStyles/entity";
 // import Features from "../components/Features";
 // import Testimonials from "../components/Testimonials";
 // import Pricing from "../components/Pricing";
@@ -13,10 +22,11 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
 export const EntityPageTemplate = ({ image, title, description, events }) => (
   <>
-    <Hero type="page" title={title} />
-    <section className="section">
-      <Container>
-        {title && <h2>{title}</h2>}
+    <Hero type="entity" title={title} />
+    <Main>
+      <Section type="primary">
+        <Container>
+          {/* {title && <h2>{title}</h2>}
         {description && <p>{description}</p>}
         {image && (
           <PreviewCompatibleImage
@@ -26,14 +36,75 @@ export const EntityPageTemplate = ({ image, title, description, events }) => (
               aspectRatio: 21 / 9,
             }}
           />
-        )}
-      </Container>
-    </section>
-    <section className="section">
-      <Container>
-        <EventRoll events={events} />
-      </Container>
-    </section>
+        )} */}
+          <Grid>
+            <ImgWrapper>
+              {image && (
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: image,
+                    alt: `featured image thumbnail for post ${title}`,
+                    aspectRatio: 21 / 9,
+                  }}
+                />
+              )}
+            </ImgWrapper>
+            <Name>{title}</Name>
+            <ByLine>
+              <p>
+                Unicorn beard chia offal small batch copper mug jean shorts.
+                Hella chia fashion axe before they sold out sartorial cardigan 3
+                wolf moon tofu
+              </p>
+            </ByLine>
+            <Social>
+              <h4>Social Platforms</h4>
+              <ul>
+                <li>
+                  <h5>Twitter</h5>
+                  <p>
+                    Followers: <span>34,172</span>
+                  </p>
+                </li>
+                <li>
+                  <h5>Facebook</h5>
+                  <p>
+                    Followers: <span>51,129</span>
+                  </p>
+                </li>
+              </ul>
+            </Social>
+            <Tags>
+              <h4>Common Events:</h4>
+              <ul>
+                <li>Fascist Entryism</li>
+                <li>Anti-Immigration</li>
+                <li>Confederate Apologism</li>
+              </ul>
+            </Tags>
+            <Overview>
+              <h4>Overview</h4>
+              <p>
+                I'm baby church-key selfies mlkshk literally, taxidermy affogato
+                brunch tote bag keffiyeh ramps deep v asymmetrical. Unicorn
+                beard chia offal small batch copper mug jean shorts. Hella chia
+                fashion axe before they sold out sartorial cardigan 3 wolf moon
+                tofu health goth heirloom etsy letterpress four dollar toast
+                vinyl. Unicorn actually roof party try-hard drinking vinegar,
+                hella sriracha squid you probably haven't heard of them
+                snackwave.
+              </p>
+            </Overview>
+          </Grid>
+        </Container>
+      </Section>
+      <Section type="primary">
+        <Container>
+          <SectionHeading>Latest Events</SectionHeading>
+          <EventRoll events={events} />
+        </Container>
+      </Section>
+    </Main>
   </>
 );
 

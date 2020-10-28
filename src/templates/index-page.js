@@ -7,8 +7,8 @@ import Layout from "../components/Layout";
 import BlogRoll from "../components/BlogRoll";
 import { EventRollFetcher } from "../components/EventRoll";
 import Hero from "../components/Hero";
-import Main from "../components/Main";
 import {
+  Main,
   Container,
   TwoCol,
   Section,

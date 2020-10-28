@@ -30,7 +30,7 @@ export const Article = styled.article`
 export const Body = styled.div`
   padding: 1em;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const Header = styled.header`

@@ -108,6 +108,7 @@ export const NavContainer = styled.div`
 export const SiteBranding = styled.div`
   img,
   a {
+    padding-left: 0;
     font-weight: 500;
     letter-spacing: 1px;
     max-width: 180px;

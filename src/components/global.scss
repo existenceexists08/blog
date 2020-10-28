@@ -58,6 +58,12 @@
   --desktop-lg: 1400px;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   color: #625f5f;
@@ -65,7 +71,6 @@ body {
   line-height: 1.6em;
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
-  box-sizing: border-box;
 }
 body {
   font-family: var(--primary-font);
@@ -85,6 +90,12 @@ body {
   h4 {
     font-size: 1.2em;
     font-weight: bold;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   main,

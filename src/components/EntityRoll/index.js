@@ -5,7 +5,7 @@ import { Link, graphql, StaticQuery } from "gatsby";
 import PreviewCompatibleImage from "../PreviewCompatibleImage";
 import { Wrapper, Article, Body, Header } from "./styles";
 
-class PropertyRoll extends React.Component {
+class EntityRoll extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
@@ -66,7 +66,7 @@ class PropertyRoll extends React.Component {
   }
 }
 
-PropertyRoll.propTypes = {
+EntityRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -77,10 +77,10 @@ PropertyRoll.propTypes = {
 export default () => (
   <StaticQuery
     query={graphql`
-      query PropertyRollQuery {
+      query EntityRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "property" } } }
+          filter: { frontmatter: { templateKey: { eq: "entity" } } }
         ) {
           edges {
             node {
@@ -108,6 +108,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <PropertyRoll data={data} count={count} />}
+    render={(data, count) => <EntityRoll data={data} count={count} />}
   />
 );

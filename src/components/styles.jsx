@@ -110,3 +110,9 @@ export const SectionHeading = styled.h2`
   margin-bottom: 2rem;
   text-align: center;
 `;
+
+export const Main = styled.main`
+  ${Section} + ${Section} {
+    padding-top: 0;
+  }
+`;

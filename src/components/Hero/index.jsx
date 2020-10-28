@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
 import {
   Banner,
   Overlay,
@@ -65,7 +66,7 @@ const Hero = ({ type, title }) => {
   }, [activeIndex]);
   return (
     <Banner type={type} role="banner">
-      {type === "page" && <Overlay />}
+      {type !== "home" && <Overlay />}
       {type === "home" && (
         <HomeBGContainer>
           <Wrapper>
@@ -106,6 +107,12 @@ const Hero = ({ type, title }) => {
             </>
           )}
           {type === "page" && <h1>{title}</h1>}
+          {type === "entity" && (
+            <h1>
+              <Link to="/entity">Entities</Link>
+              <span>{title}</span>
+            </h1>
+          )}
         </Text>
       </HeroContainer>
     </Banner>

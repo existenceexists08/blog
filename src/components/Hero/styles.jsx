@@ -16,13 +16,14 @@ export const Overlay = styled.div`
 export const HeroContainer = styled(Container)`
   align-items: center;
   display: flex;
-  min-height: 70vh;
+  /* min-height: 70vh; */
   position: relative;
   z-index: 2;
 `;
 
 export const Text = styled.div`
   color: #fff;
+  padding: 2em 0;
   text-align: left;
   text-shadow: 4px 4px 5px rgba(50, 50, 50, 1);
   width: 100%;
@@ -36,10 +37,31 @@ export const Text = styled.div`
     font-size: 4em;
     font-weight: 500;
     line-height: initial;
+    padding: 0;
+
+    a {
+      display: inline-block;
+      margin-right: 0.5em;
+      padding-right: 1em;
+      position: relative;
+      &:after {
+        color: rgba(255, 255, 255, 0.9);
+        content: "/";
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
   }
 
   * {
     color: #fff;
+  }
+
+  @media (max-width: 479px) {
+    h1 {
+      font-size: 2.25em;
+    }
   }
 `;
 
@@ -61,16 +83,16 @@ const pageBannerCSS = css`
   }
 
   ${Container} {
-    max-width: 1140px;
+    /* max-width: 1140px; */
     min-height: 0;
+    height: auto;
   }
 
   ${Text} {
-    text-align: center;
+    text-align: ${({ type }) => (type === "page" ? "center" : "left")};
     text-shadow: none;
     h1 {
       margin: 0;
-      padding: 1rem;
     }
   }
 `;
@@ -268,14 +290,27 @@ export const Banner = styled.section`
   background-size: cover;
   box-sizing: border-box;
   color: rgb(98, 95, 95);
-  display: block;
-  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   width: 100%;
 
+  ${Container} {
+    height: 55vh;
+  }
+
+  @media (min-width: 480px) {
+    height: ${({ type }) => (type === "home" ? "75vh" : "auto")};
+  }
+
   ${({ type }) => type !== "home" && pageBannerCSS}
   @media (min-width: 992px) {
+    ${Container} {
+      height: auto;
+    }
     ${Text} {
       width: ${({ type }) => (type === "home" ? "40%" : "100%")};
     }
