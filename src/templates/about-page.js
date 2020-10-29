@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 import Hero from "../components/Hero";
+import { Main, Section, Container } from "../components/styles";
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content;
@@ -11,17 +12,19 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   return (
     <>
       <Hero type="page" title={title} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="section">
-                <PageContent className="content" content={content} />
+      <Main>
+        <Section>
+          <Container>
+            <div className="columns">
+              <div className="column is-10 is-offset-1">
+                <div className="section">
+                  <PageContent className="content" content={content} />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Section>
+      </Main>
     </>
   );
 };

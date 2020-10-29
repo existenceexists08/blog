@@ -5,6 +5,7 @@ import { Link, graphql, StaticQuery } from "gatsby";
 import Button from "../Button";
 import PreviewCompatibleImage from "../PreviewCompatibleImage";
 import { Wrapper, Article, Body, Header, Tags } from "./styles";
+import { Tag } from "../styles";
 
 class BlogRoll extends React.Component {
   render() {
@@ -42,14 +43,16 @@ class BlogRoll extends React.Component {
                     <p>{post.frontmatter.date}</p>
                   </Header>
                   <div>
-                    <p>{post.frontmatter.description}</p>
+                    {post.frontmatter.subheading && (
+                      <p>{post.frontmatter.subheading}</p>
+                    )}
                     <Tags>
                       {post.frontmatter.tags.map((tag) => {
                         if (tag && typeof tag === "string")
                           return (
-                            <Link to={`/tags/${kebabCase(tag)}/`}>
-                              <Button type="tag">{tag}</Button>
-                            </Link>
+                            <Tag>
+                              <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                            </Tag>
                           );
                         return null;
                       })}

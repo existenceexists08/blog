@@ -9,7 +9,7 @@ export default class EntityIndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <Hero type="page" title=" Search Entities..." />
+        <Hero type="page" title=" Search Profiles..." />
         <main>
           <Section fade={true}>
             <Container>

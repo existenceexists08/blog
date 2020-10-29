@@ -54,8 +54,4 @@ export const Header = styled.header`
   }
 `;
 
-export const Tags = styled.div`
-  a {
-    margin-right: 0.5em;
-  }
-`;
+export const Tags = styled.div``;

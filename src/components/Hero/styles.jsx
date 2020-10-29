@@ -11,6 +11,7 @@ export const Overlay = styled.div`
   opacity: 0.5;
   transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
   height: 100%;
+  z-index: 1;
 `;
 
 export const HeroContainer = styled(Container)`
@@ -18,7 +19,7 @@ export const HeroContainer = styled(Container)`
   display: flex;
   /* min-height: 70vh; */
   position: relative;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const Text = styled.div`
@@ -68,12 +69,22 @@ export const Text = styled.div`
 const pageBannerCSS = css`
   background-attachment: fixed;
   background-color: #494949;
-  background-image: url(https://websitedemos.net/mountain/wp-content/uploads/sites/571/2020/04/landscape-mountains-sky-4843193.jpg);
+  background-image: url("/img/mountains.jpg");
   background-position: bottom center;
   background-size: cover;
   height: auto;
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
   padding: 200px 0px 100px 0px;
+  &::after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
 
   ${Overlay} {
     background-color: transparent;

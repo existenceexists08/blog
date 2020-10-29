@@ -116,3 +116,26 @@ export const Main = styled.main`
     padding-top: 0;
   }
 `;
+
+export const Tag = styled.div`
+  display: inline-block;
+  font-size: 0.79em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0 1em 1em 0;
+
+  a {
+    background: #fff;
+    border: 2px solid var(--green-300);
+    border-radius: 0.3em;
+    color: var(--green-300);
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    transition: all 0.3s linear;
+
+    &:hover {
+      background: var(--green-300);
+      color: #fff;
+    }
+  }
+`;

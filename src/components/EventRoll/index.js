@@ -4,6 +4,7 @@ import { Link, graphql, StaticQuery } from "gatsby";
 // import Button from "../Button";
 import PreviewCompatibleImage from "../PreviewCompatibleImage";
 import { Wrapper, Article, Body, Header } from "./styles";
+import { Tag } from "../styles";
 
 class EventRoll extends React.Component {
   render() {
@@ -34,24 +35,28 @@ class EventRoll extends React.Component {
                         {event.frontmatter.title}
                       </Link>
                     </h2>
-                    {/* <p>{event.frontmatter.date}</p> */}
+                    {event.frontmatter.date && <p>{event.frontmatter.date}</p>}
                   </Header>
                   <div>
-                    <p>{event.frontmatter.description}</p>
-                    {/* <Tags>
+                    {event.frontmatter.subheading && (
+                      <p>{event.frontmatter.subheading}</p>
+                    )}
+                    <div>
                       {event.frontmatter.tags.map((tag) => {
                         if (tag && typeof tag === "string")
                           return (
-                            <Link
-                              key={tag}
-                              to={`/tags/${tag.replace(/" "/, "-")}`}
-                            >
-                              <Button type="tag">{tag}</Button>
-                            </Link>
+                            <Tag>
+                              <Link
+                                key={tag}
+                                to={`/tags/${tag.replace(/" "/, "-")}`}
+                              >
+                                {tag}
+                              </Link>
+                            </Tag>
                           );
                         return null;
                       })}
-                    </Tags> */}
+                    </div>
                   </div>
                 </Body>
               </Article>

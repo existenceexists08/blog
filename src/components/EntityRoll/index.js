@@ -40,23 +40,9 @@ class EntityRoll extends React.Component {
                     </h2>
                     {/* <p>{post.frontmatter.date}</p> */}
                   </Header>
-                  <div>
-                    <p>{post.frontmatter.description}</p>
-                    {/* <Tags>
-                      {post.frontmatter.tags.map((tag) => {
-                        if (tag && typeof tag === "string")
-                          return (
-                            <Link
-                              key={tag}
-                              to={`/tags/${tag.replace(/" "/, "-")}`}
-                            >
-                              <Button type="tag">{tag}</Button>
-                            </Link>
-                          );
-                        return null;
-                      })}
-                    </Tags> */}
-                  </div>
+                  {post.frontmatter.subheading && (
+                    <p>{post.frontmatter.subheading}</p>
+                  )}
                 </Body>
               </Article>
             ))}

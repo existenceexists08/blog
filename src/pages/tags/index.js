@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Hero";
-import { Section, Container } from "../../components/styles";
+import { Main, Section, Container, Tag } from "../../components/styles";
 
 const TagsPage = ({
   data: {
@@ -18,27 +18,31 @@ const TagsPage = ({
     <Helmet title={`Tags | ${title}`} />
     <Layout>
       <Hero type="page" title="Tags" />
-      <Section>
-        <Container>
-          <div className="columns">
-            <div
-              className="column is-10 is-offset-1"
-              style={{ marginBottom: "6rem" }}
-            >
-              <h1 className="title is-size-2 is-bold-light">Tags</h1>
-              <ul className="taglist">
-                {group.map((tag) => (
-                  <li key={tag.fieldValue}>
-                    <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                      {tag.fieldValue} ({tag.totalCount})
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+      <Main>
+        <Section>
+          <Container>
+            <div className="columns">
+              <div
+                className="column is-10 is-offset-1"
+                style={{ marginBottom: "6rem" }}
+              >
+                <h1 className="title is-size-2 is-bold-light">Tags</h1>
+                <ul className="taglist">
+                  {group.map((tag) => (
+                    <li key={tag.fieldValue}>
+                      <Tag>
+                        <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                          {tag.fieldValue} ({tag.totalCount}){" "}
+                        </Link>
+                      </Tag>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        </Container>
-      </Section>
+          </Container>
+        </Section>
+      </Main>
     </Layout>
   </>
 );

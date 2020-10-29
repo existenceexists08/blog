@@ -108,13 +108,14 @@ body {
     }
 
     a {
-      color: var(--link);
+      color: var(--green-500);
+      text-decoration: none;
       transition: color 0.2s linear;
 
       &:hover,
       &:focus,
       &:active {
-        color: var(--blue-gray);
+        color: var(--green-600);
       }
     }
 

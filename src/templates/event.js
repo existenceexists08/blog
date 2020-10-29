@@ -3,12 +3,25 @@ import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 import Layout from "../components/Layout";
-import { Container } from "../components/styles";
+import { Container, Section, Tag, Main } from "../components/styles";
 import Hero from "../components/Hero";
 // import Features from "../components/Features";
 // import Testimonials from "../components/Testimonials";
 // import Pricing from "../components/Pricing";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
+import {
+  Author,
+  AuthorName,
+  AuthorSubHeading,
+  ByLine,
+  Event,
+  Grid,
+  ImgWrapper,
+  Overview,
+  Social,
+  Tags,
+  Title,
+} from "../templateStyles/event";
 
 export const EventPageTemplate = ({
   image,
@@ -16,43 +29,82 @@ export const EventPageTemplate = ({
   author,
   description,
   tags,
+  subheading,
 }) => {
   return (
     <>
       <Hero type="page" title={title} />
-      <Container>
-        <h2>{title}</h2>
-        <div style={{ maxWidth: "400px" }}>
-          {image ? (
-            <PreviewCompatibleImage
-              imageInfo={{
-                image: image,
-                alt: `featured image thumbnail for post ${title}`,
-                aspectRatio: 21 / 9,
-              }}
-            />
-          ) : null}
-        </div>
-        <div>
-          {author.fields.slug ? (
-            <Link to={author.fields.slug}>
-              <h3>{author.frontmatter.title}</h3>
-            </Link>
-          ) : (
-            <h3>{author.frontmatter.title}</h3>
-          )}
-          <p>{description}</p>
-          {tags && (
-            <ul>
-              {tags.map((tag) => (
-                <li key={tag + `tag`}>
-                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </Container>
+      <Main>
+        <Section>
+          <Container>
+            <Grid>
+              <Event>
+                <Title>{title}</Title>
+                {subheading && <ByLine>{subheading}</ByLine>}
+                <ImgWrapper>
+                  {image ? (
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: image,
+                        alt: title,
+                        aspectRatio: 21 / 9,
+                      }}
+                    />
+                  ) : null}
+                </ImgWrapper>
+                <Tags>
+                  {tags && (
+                    <ul>
+                      {tags.map((tag) => (
+                        <li key={tag + `tag`}>
+                          <Tag>
+                            <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                          </Tag>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </Tags>
+                <Overview>{description}</Overview>
+              </Event>
+              <Author>
+                <h2>Author</h2>
+                <div>
+                  {author.frontmatter.featuredimage ? (
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: author.frontmatter.featuredimage,
+                        alt: author.frontmatter.title,
+                        aspectRatio: 21 / 9,
+                      }}
+                    />
+                  ) : null}
+                </div>
+
+                {author.fields.slug ? (
+                  <AuthorName>
+                    <Link to={author.fields.slug}>
+                      {author.frontmatter.title}
+                    </Link>
+                  </AuthorName>
+                ) : (
+                  <AuthorName>{author.frontmatter.title}</AuthorName>
+                )}
+                {author.frontmatter.subheading && (
+                  <AuthorSubHeading>
+                    {author.frontmatter.Authorsubheading}
+                  </AuthorSubHeading>
+                )}
+                {author.fields.slug && (
+                  <Link to={author.fields.slug}>
+                    Back to Entiry profile page.
+                  </Link>
+                )}
+              </Author>
+            </Grid>
+          </Container>
+        </Section>
+      </Main>
     </>
   );
 };
