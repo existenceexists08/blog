@@ -71,7 +71,13 @@ const FooterComponent = class extends React.Component {
             <p>Copyright &#169; {new Date().getFullYear()} Rebel Rabbits</p>
             <p>
               <b>site credit:</b>&nbsp;{" "}
-              <a href="alexmillerwebdev.com">alexmillerwebdev</a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                href="https://www.alexmillerwebdev.com/"
+              >
+                alexmillerwebdev
+              </a>
             </p>
           </Container>
         </Bottom>

@@ -8,7 +8,6 @@ import { Wrapper, Article, Body, Header } from "./styles";
 class EventRoll extends React.Component {
   render() {
     const { events } = this.props;
-    console.log("this.props", this.props);
 
     return (
       <>

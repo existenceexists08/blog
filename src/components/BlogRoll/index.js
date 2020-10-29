@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { kebabCase } from "lodash";
 import { Link, graphql, StaticQuery } from "gatsby";
 import Button from "../Button";
 import PreviewCompatibleImage from "../PreviewCompatibleImage";
@@ -46,10 +47,7 @@ class BlogRoll extends React.Component {
                       {post.frontmatter.tags.map((tag) => {
                         if (tag && typeof tag === "string")
                           return (
-                            <Link
-                              key={tag}
-                              to={`/tags/${tag.replace(/" "/, "-")}`}
-                            >
+                            <Link to={`/tags/${kebabCase(tag)}/`}>
                               <Button type="tag">{tag}</Button>
                             </Link>
                           );

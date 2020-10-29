@@ -19,6 +19,7 @@ exports.createPages = ({ actions, graphql }) => {
               tags
               templateKey
               title
+              author
             }
           }
         }
@@ -35,9 +36,12 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach((edge) => {
       const id = edge.node.id;
       const title = edge.node.frontmatter.title;
-      if (edge.node.frontmatter.templateKey === "eventTag") {
-        return;
+      const author = _.get(edge, "node.frontmatter.author", null);
+      if (edge.node.frontmatter.templateKey === "event") {
+        console.log("ID", id);
+        console.log("author", author);
       }
+
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
@@ -48,6 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           id,
           title,
+          author,
         },
       });
     });

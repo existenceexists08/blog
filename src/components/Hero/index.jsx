@@ -37,7 +37,6 @@ const Hero = ({ type, title }) => {
   ];
 
   const activateItem = () => {
-    console.log("activeIndex", activeIndex);
     const newIndex = Math.floor(Math.random() * 9);
     setActiveIndex(newIndex === activeIndex ? newIndex + 1 : newIndex);
   };
@@ -50,20 +49,23 @@ const Hero = ({ type, title }) => {
   };
 
   useEffect(() => {
+    activateBorder();
     const borderInterval = setInterval(() => {
       //every 2 seconds
       activateBorder();
     }, 2000);
     return () => clearInterval(borderInterval);
-  }, [activeBorderIndex]);
+  }, []);
 
   useEffect(() => {
+    activateItem();
+
     const interval = setInterval(() => {
       //every 4 seconds
       activateItem();
     }, 4000);
     return () => clearInterval(interval);
-  }, [activeIndex]);
+  }, []);
   return (
     <Banner type={type} role="banner">
       {type !== "home" && <Overlay />}
@@ -75,6 +77,7 @@ const Hero = ({ type, title }) => {
                 const isTop = Math.floor(Math.random() * 2) === 0;
                 return (
                   <div
+                    key={Math.random() + index}
                     className={`item ${
                       index === activeIndex ? "isActive" : ""
                     }`}
@@ -101,8 +104,8 @@ const Hero = ({ type, title }) => {
               <h2>welcome to</h2>
               <h1>Rebel Rabbits</h1>
               <p>
-                Navigating the influences of the libertarian space. Guarding
-                against bigorty and authoritarian entryism.
+                Navigating the influences in the libertarian space. Guarding
+                against bigotry and authoritarian entryism.
               </p>
             </>
           )}

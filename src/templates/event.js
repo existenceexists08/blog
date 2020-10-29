@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { kebabCase } from "lodash";
 import Layout from "../components/Layout";
 import { Container } from "../components/styles";
 import Hero from "../components/Hero";
@@ -15,36 +16,46 @@ export const EventPageTemplate = ({
   author,
   description,
   tags,
-}) => (
-  <>
-    <Hero type="page" title={title} />
-    <Container>
-      <h2>{title}</h2>
-      <div style={{ maxWidth: "400px" }}>
-        {image ? (
-          <PreviewCompatibleImage
-            imageInfo={{
-              image: image,
-              alt: `featured image thumbnail for post ${title}`,
-              aspectRatio: 21 / 9,
-            }}
-          />
-        ) : null}
-      </div>
-      <div>
-        <h3>{author}</h3>
-        <p>{description}</p>
-        {tags && (
-          <ul>
-            {tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </Container>
-  </>
-);
+}) => {
+  return (
+    <>
+      <Hero type="page" title={title} />
+      <Container>
+        <h2>{title}</h2>
+        <div style={{ maxWidth: "400px" }}>
+          {image ? (
+            <PreviewCompatibleImage
+              imageInfo={{
+                image: image,
+                alt: `featured image thumbnail for post ${title}`,
+                aspectRatio: 21 / 9,
+              }}
+            />
+          ) : null}
+        </div>
+        <div>
+          {author.fields.slug ? (
+            <Link to={author.fields.slug}>
+              <h3>{author.frontmatter.title}</h3>
+            </Link>
+          ) : (
+            <h3>{author.frontmatter.title}</h3>
+          )}
+          <p>{description}</p>
+          {tags && (
+            <ul>
+              {tags.map((tag) => (
+                <li key={tag + `tag`}>
+                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </Container>
+    </>
+  );
+};
 
 EventPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -52,15 +63,16 @@ EventPageTemplate.propTypes = {
 };
 
 const EventPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-  console.log("frontmatter", frontmatter);
+  console.log("DATA", data);
+  const { frontmatter } = data.eventData;
+  const { author } = data;
 
   return (
     <Layout>
       <EventPageTemplate
         image={frontmatter.featuredimage}
         title={frontmatter.title}
-        author={frontmatter.author}
+        author={author}
         description={frontmatter.description}
         tags={frontmatter.tags}
       />
@@ -79,8 +91,8 @@ EventPage.propTypes = {
 export default EventPage;
 
 export const EventPageQuery = graphql`
-  query EventPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query EventPage($id: String!, $author: String!) {
+    eventData: markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
         author
@@ -88,7 +100,23 @@ export const EventPageQuery = graphql`
         tags
         featuredimage {
           childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
+            fluid(maxWidth: 1024, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    author: markdownRemark(frontmatter: { title: { eq: $author } }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        subheading
+        featuredimage {
+          childImageSharp {
+            fluid(maxWidth: 1024, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
