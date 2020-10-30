@@ -42,20 +42,21 @@ class EventRoll extends React.Component {
                       <p>{event.frontmatter.subheading}</p>
                     )}
                     <div>
-                      {event.frontmatter.tags.map((tag) => {
-                        if (tag && typeof tag === "string")
-                          return (
-                            <Tag>
-                              <Link
-                                key={tag}
-                                to={`/tags/${tag.replace(/" "/, "-")}`}
-                              >
-                                {tag}
-                              </Link>
-                            </Tag>
-                          );
-                        return null;
-                      })}
+                      {event.frontmatter.tags &&
+                        event.frontmatter.tags.map((tag) => {
+                          if (tag && typeof tag === "string")
+                            return (
+                              <Tag>
+                                <Link
+                                  key={tag}
+                                  to={`/tags/${tag.replace(/" "/, "-")}`}
+                                >
+                                  {tag}
+                                </Link>
+                              </Tag>
+                            );
+                          return null;
+                        })}
                     </div>
                   </div>
                 </Body>
