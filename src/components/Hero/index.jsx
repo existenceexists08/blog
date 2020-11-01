@@ -19,6 +19,7 @@ import Democrat from "../../img/political/democrat.svg";
 import Feminist from "../../img/political/feminist.svg";
 import Gadsden from "../../img/political/gadsden.svg";
 import Republican from "../../img/political/republican.svg";
+import { Fire, FireWrapper } from "../Fire";
 
 const Hero = ({ type, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -73,23 +74,54 @@ const Hero = ({ type, title }) => {
         <HomeBGContainer>
           <Wrapper>
             <HomeBG>
+              <svg className="hidden">
+                <filter id="wavy">
+                  <feTurbulence
+                    x="0"
+                    y="0"
+                    baseFrequency="0.009"
+                    numOctaves="5"
+                    seed="2"
+                  >
+                    <animate
+                      attributeName="baseFrequency"
+                      dur="60s"
+                      values="0.02;0.005;0.02"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </feTurbulence>
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    scale="30"
+                  ></feDisplacementMap>
+                </filter>
+              </svg>
+
               {svgs.map((Svg, index) => {
                 const isTop = Math.floor(Math.random() * 2) === 0;
                 return (
-                  <div
-                    key={Math.random() + index}
-                    className={`item ${
-                      index === activeIndex ? "isActive" : ""
-                    }`}
-                  >
-                    <Svg />
-                    <Svg />
-                    {/* <Svg />
-                    <Svg /> */}
-                    <AnimatedBorder
-                      topRight={isTop}
-                      isActive={index === activeBorderIndex}
-                    />
+                  <div className="wrapper">
+                    <FireWrapper
+                      key={Math.random() + index}
+                      className={index === activeIndex ? "isActive" : ""}
+                    >
+                      <Fire />
+                    </FireWrapper>
+                    <div
+                      className={
+                        index === activeIndex ? "item isActive " : "item"
+                      }
+                    >
+                      <AnimatedBorder
+                        topRight={isTop}
+                        isActive={index === activeBorderIndex}
+                      />
+                      <Svg />
+                      {/*<Svg />
+                       <Svg />
+                    <Svg /> 
+                    */}
+                    </div>
                   </div>
                 );
               })}

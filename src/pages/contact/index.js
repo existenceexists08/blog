@@ -38,7 +38,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout>
-        <Hero type="page" title="Contact" />
+        <Hero type="page" title="Contact..." />
         <Main>
           <Section>
             <Container>

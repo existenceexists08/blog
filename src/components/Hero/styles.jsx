@@ -187,18 +187,35 @@ export const HomeBG = styled.div`
   /* grid-gap: 10px; */
   width: 100%;
 
-  .item {
+  > svg.hidden {
+    height: 0;
+    width: 0;
+    position: absolute;
+  }
+  .wrapper {
     align-items: center;
     display: flex;
     justify-content: center;
     position: relative;
+  }
+  .item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
     padding: 10px;
-    transition: border 0.2s linear;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* transition: border 0.2s linear; */
+    opacity: 0.5;
+    transition: opacity 0.2s linear;
 
     &:before {
       content: "";
       background: rgba(255, 255, 255, 0.1);
-      border: 1px solid white;
+      /* border: 1px solid white; */
       border-radius: 15px;
       position: absolute;
       height: calc(100% - 20px);
@@ -207,8 +224,7 @@ export const HomeBG = styled.div`
       top: 10px;
       left: 10px;
     }
-
-    &:after {
+    /* &:after {
       border-radius: 15px;
       content: "";
       position: absolute;
@@ -219,8 +235,7 @@ export const HomeBG = styled.div`
       transition: opacity 0.3s linear;
       box-shadow: 0px 0px 29px 6px rgba(20, 255, 236, 1);
       width: calc(100% - 20px);
-    }
-
+    } */
     svg {
       position: absolute;
       /* transition: 1s cubic-bezier(0.25, 1.55, 0.74, 0); */
@@ -229,7 +244,7 @@ export const HomeBG = styled.div`
       height: auto;
       fill: var(--blue-light);
       stroke: var(--blue-light);
-      opacity: 0.2;
+      opacity: 0.5;
       &#ballot {
         stroke: none;
       }
@@ -239,58 +254,20 @@ export const HomeBG = styled.div`
       &.feminist {
         width: 55%;
       }
-
-      /* &:nth-child(3) {
-        opacity: calc(0.6 * 0.2);
-      } */
       &:nth-child(1) {
         opacity: calc(0.4 * 0.2);
       }
-      /* &:nth-child(1) {
-        opacity: calc(0.2 * 0.2);
-      } */
       @media (min-width: 992px) {
         opacity: 0.5;
-
-        /* &:nth-child(3) {
-          opacity: calc(0.6 * 0.5);
-        } */
         &:nth-child(1) {
           opacity: calc(0.4 * 0.5);
         }
-        /* &:nth-child(1) {
-          opacity: calc(0.2 * 0.5);
-        } */
       }
     }
-
     &.isActive {
-      border-color: var(--blue-light);
-
-      &:after {
-        opacity: 1;
-      }
+      opacity: 1;
       svg {
-        &:nth-child(4) {
-          /* animation: ${bounce4} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          animation: ${bounce4} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
-        }
-        &:nth-child(3) {
-          /* animation: ${bounce3} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          animation: ${bounce3} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14);
-        }
-        &:nth-child(2) {
-          /* animation: ${bounce4} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          /* animation: ${bounce4} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14); */
-          animation: ${bounce1} 2s ease-in-out;
-        }
-
-        &:nth-child(1) {
-          display: none;
-          /* animation: ${bounce2} 2s cubic-bezier(0.25, 1.55, 0.74, 0); */
-          /* animation: ${bounce2} 2s cubic-bezier(0.46, 1.27, 0.53, -0.14); */
-          animation: ${bounce2} 2s ease-in-out;
-        }
+        animation: ${bounce1} 2s ease-in-out;
       }
     }
   }
