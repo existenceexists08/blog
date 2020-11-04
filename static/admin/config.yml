@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: aljmiller87/blog
+  open_authoring: true
   branch: master
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
